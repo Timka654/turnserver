@@ -8,10 +8,6 @@ namespace Microsoft.Win32.Ssp
 	[SuppressUnmanagedCodeSecurity]
 	internal static class Secur32Dll
 	{
-		private const string SECUR32 = "secur32.dll";
-
-		public const string UNISP_NAME = "Microsoft Unified Security Protocol Provider";
-
 		[DllImport("secur32.dll", ExactSpelling = true, SetLastError = true)]
 		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
 		public static extern int FreeContextBuffer([In] IntPtr pvContextBuffer);
@@ -37,18 +33,6 @@ namespace Microsoft.Win32.Ssp
 		[DllImport("secur32.dll", ExactSpelling = true, SetLastError = true)]
 		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
 		public unsafe static extern int QueryContextAttributesA([In] ref CtxtHandle phContext, [In] uint ulAttribute, [Out] void* pBuffer);
-
-		[DllImport("secur32.dll", ExactSpelling = true, SetLastError = true)]
-		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
-		public static extern int MakeSignature([In] ref CtxtHandle phContext, [In] int fQOP, [In] [Out] ref SecBufferDesc pMessage, [In] int MessageSeqNo);
-
-		[DllImport("secur32.dll", ExactSpelling = true, SetLastError = true)]
-		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
-		public static extern int VerifySignature([In] ref CtxtHandle phContext, [In] ref SecBufferDesc pMessage, [In] int MessageSeqNo, out int pfQOP);
-
-		[DllImport("secur32.dll", ExactSpelling = true, SetLastError = true)]
-		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
-		public static extern int DecryptMessage([In] ref CtxtHandle phContext, [In] [Out] ref SecBufferDesc pMessage, [In] uint MessageSeqNo, out uint pfQOP);
 
 		[DllImport("secur32.dll", ExactSpelling = true, SetLastError = true)]
 		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]

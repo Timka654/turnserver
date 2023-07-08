@@ -2,6 +2,7 @@
 using System.Net;
 using System.ServiceProcess;
 using System.Text;
+using System.Threading;
 using Turn.Server;
 
 namespace Service
@@ -30,6 +31,7 @@ namespace Service
 
             turnServer.Start();
 
+            Thread.Sleep(Timeout.Infinite);
         }
     }
 }
